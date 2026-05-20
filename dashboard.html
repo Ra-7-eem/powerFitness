@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gym Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <div class="brand">POWER FITNESS</div>
+        <nav class="nav-list">
+          <button class="active" data-scroll="stats-section">الرئيسية</button>
+          <button data-scroll="pending-section">الطلبات المعلقة</button>
+          <button data-scroll="members-section">المشتركين</button>
+        </nav>
+      </aside>
+
+      <main class="main">
+        <div class="topbar">
+          <h1>لوحة التحكم</h1>
+          <div class="search-bar">
+            <button id="search-btn" class="search-btn" type="button" aria-label="ابحث عن مشترك">
+              <i data-lucide="search"></i>
+            </button>
+            <input id="search-input" type="text" placeholder="ابحث عن مشترك" />
+            <button id="reset-btn" class="reset-btn hidden" type="button" aria-label="تفريغ البحث">&times;</button>
+          </div>
+        </div>
+
+        <section id="stats-section" class="card-grid">
+          <div class="stat-card">
+            <span>إجمالي عدد المشتركين</span>
+            <strong id="stat-total" class="skeleton">--</strong>
+          </div>
+          <div class="stat-card">
+            <span>المشتركين الفعالين</span>
+            <strong id="stat-active" class="skeleton">--</strong>
+          </div>
+          <div class="stat-card">
+            <span>الطلبات المعلقة</span>
+            <strong id="stat-pending" class="skeleton">--</strong>
+          </div>
+          <div class="stat-card">
+            <span>اشتراكات جديدة شهريا</span>
+            <strong id="stat-monthly" class="skeleton">--</strong>
+          </div>
+          <div class="stat-card">
+            <span>اشتراكات قاربت على الانتهاء</span>
+            <strong id="stat-expiring" class="skeleton">--</strong>
+          </div>
+        </section>
+
+        <div id="pending-alert" class="alert-banner hidden">
+          <span>تنبيه: يوجد <strong id="alert-pending-count">0</strong> طلبات معلقة تحتاج متابعة.</span>
+          <button id="pending-filter-btn" class="filter-btn" type="button">عرض الطلبات المعلقة</button>
+        </div>
+
+        <section id="chart-section" class="chart-section">
+          <div class="section-header">
+            <h3>تحليل الاشتراكات</h3>
+          </div>
+          <canvas id="membershipChart" height="120"></canvas>
+        </section>
+
+        <section id="pending-section" class="pending-section">
+            <div class="section-header">
+            <h3>الطلبات المعلقة</h3>
+            </div>
+            <div id="pending-box" class="card-grid"></div>
+        </section>
+
+        <section id="members-section" class="table-section">
+          <div class="section-header">
+            <h3>جدول المشتركين</h3>
+            <div class="filter-controls">
+              <button id="reset-filters-btn" class="filter-btn" type="button">Reset</button>
+              <select id="status-filter" class="filter-select" aria-label="تصفية حسب الحالة">
+                <option value="all">كل الحالات</option>
+                <option value="active">نشط</option>
+                <option value="pending">قيد المراجعة</option>
+                <option value="inactive">غير نشط</option>
+                <option value="rejected">مرفوض</option>
+              </select>
+              <select id="plan-filter" class="filter-select" aria-label="تصفية حسب الباقة">
+                <option value="all">كل الباقات</option>
+              </select>
+            </div>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>الاسم</th>
+                <th>الهاتف</th>
+                <th>الباقة</th>
+                <th>الحالة</th>
+                <th class="sort-header">
+                  <button id="sort-date-btn" class="sort-btn" type="button" data-order="desc" aria-label="ترتيب حسب تاريخ الانتهاء">
+                    انتهاء الاشتراك
+                    <span class="sort-arrow" aria-hidden="true">↓</span>
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="members-body"></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="js/dashboard.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
