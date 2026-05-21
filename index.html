@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gym Premium Membership</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="page page-client">
+    <canvas id="mesh-bg" class="mesh-bg" aria-hidden="true"></canvas>
+    <div class="bg">
+      <div class="bg-image"></div>
+      <div class="bg-glow"></div>
+    </div>
+
+    <main class="page-wrap">
+      <section class="glass-card glow">
+        <div class="loader" aria-hidden="true"><span class="dot"></span></div>
+        
+        <div class="card-top">
+            <div class="logo-badge" aria-hidden="true"></div>
+        </div>
+        
+        <div class="card-bottom">
+            <div class="hero">
+              <h2>ابدأ رحلتك نحو جسم أقوى وحياة أفضل</h2>
+              <p>انضم الآن واكشف الستار عن أقوى وأفضل نسخة من جسمك.</p>
+            </div>
+            <div class="actions">
+              <button id="subscribe-btn" class="primary-btn">
+                تسجيل <i class="fa-solid fa-bell"></i>
+              </button>
+              <a class="whatsapp-btn" href="https://wa.me/972594481190" target="_blank" rel="noopener noreferrer">
+                واتساب للتواصل <i class="fa-brands fa-whatsapp"></i>
+              </a>
+            </div>
+        </div>
+
+      </section>
+    </main>
+
+    <div class="toast-container"></div>
+
+    <div id="register-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="register-title" aria-modal="true">
+      <div class="modal__backdrop" data-close="modal"></div>
+      <div class="modal__panel" role="document">
+        <button class="modal__close" type="button" aria-label="إغلاق" data-close="modal">×</button>
+        <div class="modal__header">
+          <p>أكمل النموذج التالي لإرسال طلب الاشتراك.</p>
+        </div>
+        <div class="modal__body">
+          <div class="section-switch">
+            <button class="toggle-btn active" data-target="old-subscriber">استعلام عن الاشتراك <span>(مشترك قديم)</span></button>
+            <button class="toggle-btn" data-target="new-subscriber">مشترك جديد</button>
+          </div>
+
+          <section id="old-subscriber" class="form-section active">
+            <form id="old-form" class="form-grid">
+              <div class="input-group">
+                <label>الاسم الكامل</label>
+                <input id="old-name" type="text" placeholder="الاسم الثلاثي" required />
+              </div>
+              <div class="input-group">
+                <label>رقم الهاتف</label>
+                <input id="old-phone" type="tel" placeholder="05XXXXXXXXX" required />
+              </div>
+              <div class="input-group">
+                <label>&nbsp;</label>
+                <button type="submit" class="secondary-btn">بحث</button>
+              </div>
+            </form>
+            <div id="notice-box" class="notice"></div>
+            <div id="result-box"></div>
+          </section>
+
+          <section id="new-subscriber" class="form-section">
+            <form id="new-form" class="form-grid">
+              <div class="input-group">
+                <label>تاريخ الاشتراك</label>
+                <input id="start-date" type="date" required />
+              </div>
+              <div class="input-group">
+                <label>الاسم الكامل</label>
+                <input id="new-name" type="text" required />
+              </div>
+              <div class="input-group">
+                <label>رقم الهاتف</label>
+                <input id="new-phone" type="tel" required />
+              </div>
+              <div class="input-group">
+                <label>نوع الباقة</label>
+                <select id="plan-type" required>
+                  <option value="monthly">شهري</option>
+                  <option value="quarterly">3 شهور</option>
+                </select>
+              </div>
+              <div class="input-group" style="display: none;">
+                <label>ملاحظات إضافية</label>
+                <textarea id="notes" rows="3" placeholder="اختياري"></textarea>
+              </div>
+              <div class="input-group" style="grid-column: 1 / -1;">
+                <button type="submit" class="primary-btn">تأكيد الاشتراك</button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/mesh.js"></script>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
